@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RownanieKwadratowe.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Testy1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">testy1</a> &gt; <span class="el_source">RownanieKwadratowe.java</span></div><h1>RownanieKwadratowe.java</h1><pre class="source lang-java linenums">package testy1;
+public class RownanieKwadratowe {
+    
+    private final double a, b, c;
+    private double delta;
+    private double[] wyniki;
+    
+<span class="fc" id="L8">    public RownanieKwadratowe(double a, double b, double c){</span>
+<span class="fc" id="L9">        this.a = a;</span>
+<span class="fc" id="L10">        this.b = b;</span>
+<span class="fc" id="L11">        this.c = c;</span>
+<span class="fc" id="L12">    }</span>
+    
+    public double[] obliczPierwiastki(){
+<span class="fc" id="L15">        double pierwDelta = Math.sqrt(delta);</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        for (int i = 0; i &lt; wyniki.length; i++) {</span>
+<span class="fc" id="L17">            wyniki[i] = (-b - pierwDelta) / (2 * a);</span>
+<span class="fc" id="L18">            pierwDelta = -pierwDelta;</span>
+        }
+<span class="fc" id="L20">        return wyniki;</span>
+    }
+
+    public String ObliczLiczbePierwiastkow(){
+        String komunikat;
+<span class="fc" id="L25">        delta = Math.pow(b, 2) - (4 * a * c);</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">        if(delta&gt;0){</span>
+<span class="fc" id="L27">            komunikat = &quot;Delta &gt; 0, istnieją dwa pierwiastki równania&quot;;</span>
+<span class="fc" id="L28">            wyniki = new double[2];</span>
+        }  
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        else if(delta&lt;0){</span>
+<span class="nc" id="L31">            wyniki = new double[0];</span>
+<span class="nc" id="L32">            komunikat = &quot;Delta &lt; 0, brak pierwiastków równania.&quot;;</span>
+        }   
+        else{
+<span class="nc" id="L35">            komunikat = &quot;Delta = 0, istnieje jeden pierwiastek równania&quot;;</span>
+<span class="nc" id="L36">            wyniki = new double[1];</span>
+        }
+<span class="fc" id="L38">            return komunikat;</span>
+            
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
